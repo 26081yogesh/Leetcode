@@ -1,16 +1,23 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        unordered_map<int, int> mp;
-        for(auto i:nums){
-            mp[i]++;
-        }
+        // unordered_map<int, int> mp;
+        // for(auto i:nums){
+        //     mp[i]++;
+        // }
 
-        for(auto i:mp){
-            if(i.second == 1){
-                return i.first;
-            }
+        // for(auto i:mp){
+        //     if(i.second == 1){
+        //         return i.first;
+        //     }
+        // }
+        // return 0;
+
+
+        int xor1 = 0;
+        for(auto i:nums){
+            xor1 ^= i;
         }
-        return 0;
+        return xor1;
     }
 };
