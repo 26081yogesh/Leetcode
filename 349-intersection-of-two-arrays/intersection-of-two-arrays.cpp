@@ -25,6 +25,8 @@ public:
 
         // return v;
 
+
+        // Approach 2  --> Using two pointer approach
         vector<int> v;
         sort(nums1.begin(), nums1.end());
         sort(nums2.begin(), nums2.end());
