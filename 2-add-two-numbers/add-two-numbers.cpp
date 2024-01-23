@@ -10,22 +10,7 @@
  */
 class Solution {
 public:
-    ListNode *reverseLL(ListNode *head){
-        ListNode *current = head;
-        ListNode *previous = NULL;
-        ListNode *forward = NULL;
-        while(current != NULL){
-            forward = current -> next;
-            current -> next = previous;
-            previous = current;
-            current = forward;
-        }
-        return previous;
-    }
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        // ListNode *L1 = reverseLL(l1);
-        // ListNode *L2 = reverseLL(l2);
-
         ListNode *temp1 = l1;
         ListNode *temp2 = l2;
         ListNode *newNode = new ListNode(-100);
@@ -34,8 +19,7 @@ public:
 
         int carry = 0;
         while(temp1 != NULL and temp2 != NULL){
-            int sum = temp1 -> val + temp2 -> val;
-            sum += carry;
+            int sum = temp1 -> val + temp2 -> val + carry;
             ListNode *newNode = new ListNode(sum % 10);
             temp -> next = newNode;
             carry = sum / 10;
