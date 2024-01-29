@@ -12,7 +12,7 @@ public:
                 i--;
             }
             else{
-                return count;
+                break;
             }
             
         }
