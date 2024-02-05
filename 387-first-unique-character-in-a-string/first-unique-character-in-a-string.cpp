@@ -19,29 +19,44 @@ public:
         // }
         // return -1;
 
-        map<char, int> mp;
-        for(int i=0;i<s.size();i++){
-            mp[s[i]]++;
+        // Extra space but TC - O(n)
+        // map<char, int> mp;
+        // for(int i=0;i<s.size();i++){
+        //     mp[s[i]]++;
+        // }
+
+        // for(int i=0;i<mp.size();i++){
+        //     cout<<mp[s[i]]<<endl;
+        // }
+
+        // string ans;
+        // for(int i=0;i<s.size();i++){
+        //     if(mp[s[i]] == 1){
+        //         cout<<"Hiii"<<endl;
+        //         ans = s[i];
+        //         break;
+        //     }
+        // }
+        // if(!ans.empty()){
+        //     for(int i=0;i<s.size();i++){
+        //         if(ans[0] == s[i]){
+        //             return i;
+        //         }
+        //     }
+        // }
+        // return -1;
+
+
+
+        // Using frequency 
+        vector<int> frequency(26, 0);
+        for(auto i:s){
+            frequency[i-'a']++;
         }
 
-        for(int i=0;i<mp.size();i++){
-            cout<<mp[s[i]]<<endl;
-        }
-
-        string ans;
         for(int i=0;i<s.size();i++){
-            if(mp[s[i]] == 1){
-                cout<<"Hiii"<<endl;
-                ans = s[i];
-                break;
-            }
-        }
-        cout<<"Hrllo"<<ans;
-        if(!ans.empty()){
-            for(int i=0;i<s.size();i++){
-                if(ans[0] == s[i]){
-                    return i;
-                }
+            if(frequency[s[i] - 'a'] == 1){
+                return i;
             }
         }
         return -1;
