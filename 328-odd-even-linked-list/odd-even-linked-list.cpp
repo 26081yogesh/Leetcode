@@ -12,32 +12,32 @@ class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
         // Brute Force
-        vector<int> odd;
-        vector<int> even;
+        if(head == NULL or head -> next == NULL){
+            return head;
+        }
+        vector<int> ans;
         ListNode *temp = head;
-        int index = 0;
+        while(temp != NULL and temp -> next != NULL){
+            ans.push_back(temp -> val);
+            temp = temp -> next -> next;
+        }
+        if(temp){
+            ans.push_back(temp -> val);
+        }
+        temp = head -> next;;
+        while(temp != NULL and temp -> next != NULL){
+            ans.push_back(temp -> val);
+            temp = temp -> next -> next;
+        }
+        if(temp){
+            ans.push_back(temp -> val);
+        }
+        temp = head;
+        int i = 0;
         while(temp != NULL){
-            if(index % 2 == 0){
-                even.push_back(temp -> val);
-            }
-            else{
-                odd.push_back(temp -> val);
-            }
-            index++;
+            temp -> val = ans[i++];
             temp = temp -> next;
         }
-        ListNode *h = new ListNode(-100);
-        temp = h;
-        for(auto i:even){
-            ListNode *newNode = new ListNode(i);
-            temp -> next = newNode;
-            temp = temp -> next;
-        }
-        for(auto i:odd){
-            ListNode *newNode = new ListNode(i);
-            temp -> next = newNode;
-            temp = temp -> next;
-        }
-        return h -> next;
+        return head;
     }
 };
