@@ -19,7 +19,6 @@ public:
         while(start < n and end < n){
             if(prices[start] > prices[end]){
                 start++;
-                
             }
             else{
                 profit = max(profit, prices[end]-prices[start]);
