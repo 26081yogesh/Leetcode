@@ -11,19 +11,30 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        set<int> st;
+        // set<int> st;
+        // ListNode *temp = head;
+        // while(temp != NULL){
+        //     st.insert(temp->val);
+        //     temp = temp -> next;
+        // }
+        // ListNode *dummy = new ListNode(-1);
+        // temp = dummy;
+        // for(auto i:st){
+        //     ListNode *newNode = new ListNode(i);
+        //     temp -> next = newNode;
+        //     temp = temp -> next;
+        // }
+        // return dummy -> next;
+
+
         ListNode *temp = head;
-        while(temp != NULL){
-            st.insert(temp->val);
+        while(temp != NULL and temp -> next != NULL){
+            if(temp -> val == temp -> next -> val){
+                temp -> next = temp -> next -> next;
+                continue;
+            }
             temp = temp -> next;
         }
-        ListNode *dummy = new ListNode(-1);
-        temp = dummy;
-        for(auto i:st){
-            ListNode *newNode = new ListNode(i);
-            temp -> next = newNode;
-            temp = temp -> next;
-        }
-        return dummy -> next;
+        return head;
     }
 };
